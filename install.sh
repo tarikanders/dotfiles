@@ -30,12 +30,16 @@ else
   echo "[dotfiles] RTK déjà installé ($(rtk --version 2>/dev/null))."
 fi
 
-# ── 3. VSCode keybindings ────────────────────────────────────────────────────
+# ── 3. Git ───────────────────────────────────────────────────────────────────
+echo "[dotfiles] Configuration Git..."
+cp "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+
+# ── 4. VSCode keybindings ────────────────────────────────────────────────────
 echo "[dotfiles] Configuration VSCode..."
 mkdir -p "$HOME/.config/Code/User"
 cp "$DOTFILES_DIR/vscode/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
 
-# ── 4. Extensions VSCode ─────────────────────────────────────────────────────
+# ── 5. Extensions VSCode ─────────────────────────────────────────────────────
 if command -v code &>/dev/null; then
   echo "[dotfiles] Installation des extensions VSCode..."
   code --install-extension shd101wyy.markdown-preview-enhanced --force
